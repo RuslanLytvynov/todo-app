@@ -1,12 +1,12 @@
-#from functions import get_todos, write_todos
+# from functions import get_todos, write_todos
 import functions
 import time
 
-now = time.strftime("%b %d %Y %H:%M:%S")
+now = time.strftime("%b %d, %Y %H:%M:%S")
 print("It is", now)
 
 while True:
-    user_action = input("Type add, show, edit, complete): ")
+    user_action = input("Type add, show, edit, complete or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith("add"):
@@ -14,17 +14,17 @@ while True:
 
         todos = functions.get_todos()
 
-        todos.append(todo + "\n")
+        todos.append(todo + '\n')
 
         functions.write_todos(todos)
 
-    elif user_action.startswith("show"):
+    elif user_action.startswith('show'):
 
         todos = functions.get_todos()
 
-        for index, todo in enumerate(todos):
-            item = item.strip("\n")
-            row = f"{index + 1} - {item}"
+        for index, item in enumerate(todos):
+            item = item.strip('\n')
+            row = f"{index + 1}-{item}"
             print(row)
     elif user_action.startswith('edit'):
         try:
@@ -36,7 +36,7 @@ while True:
             todos = functions.get_todos()
 
             new_todo = input("Enter new todo: ")
-            todos[number] = new_todo + "\n"
+            todos[number] = new_todo + '\n'
 
             functions.write_todos(todos)
         except ValueError:
@@ -54,10 +54,10 @@ while True:
 
             functions.write_todos(todos)
 
-            message = f"Todo{todo_to_remove} was removed from the list."
+            message = f"Todo {todo_to_remove} was removed from the list."
             print(message)
         except IndexError:
-            print("There is no item with this number.")
+            print("There is no item with that number.")
             continue
 
     elif user_action.startswith('exit'):
